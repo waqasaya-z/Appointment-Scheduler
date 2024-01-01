@@ -15,7 +15,10 @@ router.get('/', (req,res) => {
 router.post('/', (req,res) => {
     const { name, email } = req.body;
 
-   const updated = Appointments.
+   const updated = Appointments.create({
+    name: name,
+    email: email
+   })
 
    res.status(200)
 })
