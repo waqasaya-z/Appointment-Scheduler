@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const Slot = require('./routes/slots')
 const Appointment = require('./routes/appointments')
+const cors = require('cors')
 dotenv.config()
 
 //mongodb://localhost:27017
@@ -11,6 +12,7 @@ mongoose.connect("mongodb://localhost/scheduler")
 .catch((err) => console.log(err))
 
 const app = express();
+app.use(cors())
 app.use(express.json());
 app.use('/slots', Slot)
 app.use('/appointments', Appointment)
